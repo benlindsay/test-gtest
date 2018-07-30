@@ -9,5 +9,4 @@ rm -rf $GTEST_DIR && \
   cd build && \
   cmake -DCMAKE_INSTALL_PREFIX=$PROJ_ROOT .. && \
   make && \
-  make install && \
-  cd $PROJ_ROOT
+  make install
