@@ -1,19 +1,16 @@
-# compiler variables and flags
-CC := g++
 CXX := g++
-# CC := mpic++
-LIB := -L lib
+LIB_DIR := lib
+LIB := -L $(LIB_DIR)
+GTEST_FILE := $(LIB_DIR)/libgtest_main.a
 INC := -I include
 CPPFLAGS += -isystem include
-
-# Flags passed to the C++ compiler.
 CXXFLAGS += -g -Wall -Wextra -pthread
 
-lib/libgtest_main.a lib/libgmock_main.a: install-googletest.sh
+$(GTEST_FILE): install-googletest.sh
 	./install-googletest.sh
 
 test.o: test.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c test.cpp $(INC) $(LIB)
 
-test: test.o lib/libgtest_main.a
+test: test.o $(LIB_DIR)/libgtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ $(INC) -o $@ $(LIB)

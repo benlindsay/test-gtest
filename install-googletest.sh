@@ -1,8 +1,4 @@
 #!/bin/bash
-#
-# install-googletest.sh
-#
-# Copyright (c) 2018 Ben Lindsay <benjlindsay@gmail.com>
 
 PROJ_ROOT=$(pwd)
 GTEST_DIR=/tmp/googletest
